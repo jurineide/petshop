@@ -28,4 +28,10 @@ public class AnimalController {
         List<AnimalDTO> animalDTOList = animalService.findAll();
         return ResponseEntity.ok(animalDTOList);
     }
+
+     @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteAnimal(@PathVariable Long id) {
+        animalService.deleteById(id);
+        return ResponseEntity.noContent().build(); 
+    }
 }
