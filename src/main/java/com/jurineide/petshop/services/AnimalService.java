@@ -28,4 +28,11 @@ public class AnimalService {
 
         return animals.stream().map(animal -> new AnimalDTO(animal.getId(), animal.getName(), animal.getTipoAnimal()) ).collect(Collectors.toList());
     }
+
+     public void deleteById(Long id) {
+        if (!animalRepository.existsById(id)) {
+            throw new RuntimeException("Animal com ID " + id + " não encontrado.");
+        }
+        animalRepository.deleteById(id);
+    }
 }
